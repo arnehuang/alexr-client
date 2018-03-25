@@ -3,9 +3,9 @@
     "CUSTOM_SERVICE": "sample.py",
     "AWS_ACCESS_KEY": "",
     "AWS_SECRET_KEY": "",
-    "ACTION_NAME": "SitesLinkingIn",
+    "ACTION_NAME": "UrlInfo",
     "ACTION_GROUP": {
-        "UrlInfo": "",
+        "UrlInfo": "Rank",
         "TrafficHistory": "History",
         "SitesLinkingIn": "SitesLinkingIn",
         "CategoryBrowser": ""
