@@ -1,0 +1,13 @@
+{
+    "MAX_WORKERS": 100,
+    "CUSTOM_SERVICE": "sample.py",
+    "AWS_ACCESS_KEY": "",
+    "AWS_SECRET_KEY": "",
+    "ACTION_NAME": "SitesLinkingIn",
+    "ACTION_GROUP": {
+        "UrlInfo": "",
+        "TrafficHistory": "History",
+        "SitesLinkingIn": "SitesLinkingIn",
+        "CategoryBrowser": ""
+    }
+}
