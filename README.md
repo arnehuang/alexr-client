@@ -1,14 +1,24 @@
-# Alexr Client
+# Alexr - AWIS Web Analytics & Traffic Client
  Impressively Fast Multithreaded Python Implementation of AWS Alexa Website Analytics Service 
 
-### Alexr Client Can
+ ## Basic Info
+
+Alexr Client Can -
 
 * Gather information about web sites, including historical web traffic data, related links and more.
 * Access historical web traffic data for web sites to analyze growth and understand the effects of specific events on web site traffic
 * Access the list of sites linking to any given site
 
 
-## Necessary Required Permission To Access AWIS
+### Getting Started
+
+Following are the necessary required dependencies to be installed for the application to run.
+
+#### Prerequisites
+
+`pip3 install requests xmltodict`
+
+#### Necessary Required Permission To Access AWIS
 
 Inorder to get start using with AWIS Service API you needs to give AWIS access permission to you AWS IAM Role. Access permission provided below
 
@@ -26,9 +36,9 @@ Inorder to get start using with AWIS Service API you needs to give AWIS access p
             }
         ]
     } 
-    
-### A Four Step Setup
 
+### Running the Setup
+    
 * Create a services class within service/new_service.py
 * Write two functions - loadInput and processOutput passing necessary params and callback functions.
 * Update the Config Json
@@ -41,10 +51,7 @@ Inorder to get start using with AWIS Service API you needs to give AWIS access p
 
 #### Service Module
 
-* Services module was built to decouple the input and output source of the service. 
-* A major advantage that the Services module gives is that one can pass required requests in batches highly useful if one is polling the request input periodically from various sources.
-
-Getting started with Sample.py is pretty simple. If you take a look at the services/sample.py module the implementation is pretty straight forward.
+If you take a look at the services/sample.py module the implementation is pretty straight forward.
 
 There are two methods:
 
@@ -54,31 +61,17 @@ There are two methods:
 Services module contains a method named `loadInput` - that takes in two parameters: `meta` object and a `callback` function. 
 
     def loadInput(meta, callback):
-        outputObj = open("output.txt", "w")
-        with open("input.txt", "r") as inpObj:
-            domains = inpObj.readlines()
-            callback(domains, outputCallback=processOutput)
-
-* `meta` object lets you add or remove config that could be passed around easily through the service for post processing work.
-* `Callback` function is the function that will run the Alexr service. Callback function needs to be passed the domains list or set. Which will serve as the input list.
-
-`One can use the Services module for instantiating DB connections as well` 
+        # Input Domain list to be loaded
+        # Passing domains and outputcallback function to the Alexr Service.
+        callback(domains, outputCallback=processOutput)
 
 The output processing is handled by the `processOutput` function
 
 Here the response dictionary is parsed and appended to a file output.txt which was instantiated in the loadInput method.
 
     def processOutput(meta, pageURL, resDict):
-        try:
-            rank = resDict["aws:UrlInfoResponse"]["aws:Response"]["aws:UrlInfoResult"]["aws:Alexa"]["aws:TrafficData"]["aws:Rank"]
-            with open("output.txt", "a") as outputObj:
-                jsonStr = json.dumps(str({"page": pageURL.strip(), "rank": rank}))
-                outputObj.write(jsonStr)
-                outputObj.write("\n")
-                outputObj.flush()
-        except Exception as exp:
-            raise
-
+         ## write your parsing implementation
+         ## Do something with the output
 
 #### Config Json
 
@@ -98,9 +91,13 @@ Config Json is the heart of the system. Provided is the sample config json.
         }
     }
 
-There are only few parameters that you've to fill other than AWS Access and Secret Key. So, in order for one to use a CUSTOM_SERVICE one has to include the class name of the service in this key pair. Only then it will be instantiated.
+There are only few parameters that you've to fill other than AWS Access and Secret Key. 
 
-`ACTION_NAME` and `ACTION_GROUP` determines the API Url to be used to get the specific information. Available below are the various web analytics attributes that one can get for each action name and action group.
+So, in order for one to use a CUSTOM_SERVICE one has to include the class name of the service in this key pair. Only then it will be instantiated.
+
+`ACTION_NAME` and `ACTION_GROUP` determines the API Url to be used to get the specific information. 
+
+Available below are the various web analytics attributes that one can get for each action name and action group.
 
 
     "TrafficHistory": "History"
@@ -134,3 +131,16 @@ So to get specific information one just has to map the Action name to its group 
 
 > Note: Multiple action group cannot be passed. Issue being fixed
 
+### Built With
+
+* Python3 - Python version used
+* Requests - Http Client
+* XMLtoDict - Parsing XML to Dict
+
+### Authors
+
+* Fauzan Baig 
+
+### License
+
+This project is licensed under the GNU General Public License v3.0
