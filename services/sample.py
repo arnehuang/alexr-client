@@ -2,7 +2,7 @@ import json
 
 def processOutput(meta, pageURL, resDict):
     try:
-        rank = resDict["aws:UrlInfoResponse"]["aws:Response"]["aws:UrlInfoResult"]["aws:Alexa"]["aws:TrafficData"]["aws:Rank"]
+        rank = resDict["aws:UrlInfoResponse"]["aws:Response"]["aws:UrlInfoResult"]["aws:Alexa"]["aws:TrafficData"]
         with open("output.txt", "a") as outputObj:
             jsonStr = json.dumps(str({"page": pageURL.strip(), "rank": rank}))
             outputObj.write(jsonStr)
