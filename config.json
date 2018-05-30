@@ -1,11 +1,11 @@
 {
-    "MAX_WORKERS": 100,
+    "MAX_WORKERS": 50,
     "CUSTOM_SERVICE": "sample.py",
-    "AWS_ACCESS_KEY": "",
-    "AWS_SECRET_KEY": "",
+    "AWS_ACCESS_KEY": "---",
+    "AWS_SECRET_KEY": "---",
     "ACTION_NAME": "UrlInfo",
     "ACTION_GROUP": {
-        "UrlInfo": "Rank",
+        "UrlInfo": "TrafficData",
         "TrafficHistory": "History",
         "SitesLinkingIn": "SitesLinkingIn",
         "CategoryBrowser": ""

@@ -1,3 +1,11 @@
+from https://github.com/fauzanbaigm/alexr-client
+
+run __init__.py (why he named it this I don't know)
+
+config has some settings
+
+
+
 # Alexr - AWIS Web Analytics & Traffic Client
  Impressively Fast Multithreaded Python Implementation of AWS Alexa Website Analytics Service 
 
@@ -139,7 +147,7 @@ So to get specific information one just has to map the Action name to its group 
 
 ### Authors
 
-* Fauzan Baig 
+* Fauzan Baig
 
 ### License
 
